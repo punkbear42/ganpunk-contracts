@@ -67,6 +67,9 @@ contract GanPunk is Initializable, ERC721Upgradeable, OwnableUpgradeable, UUPSUp
     function mint(bytes memory _model, bytes memory _input, address _to, uint256 tokenId) public payable {
         bytes32 latentSpaceHash = keccak256(abi.encode(_model, _input));        
         require(latentSpaceHashes[latentSpaceHash] == false, "latent space already used");
+        datas[tokenId] = data(_model, _input);
+        latentSpaceHashes[latentSpaceHash] = true;
+
         if (safe != address(0)) {
             require(msg.value != 0, "value is set to 0");
             safe.transfer(msg.value * safePercent / 100);
@@ -75,10 +78,7 @@ contract GanPunk is Initializable, ERC721Upgradeable, OwnableUpgradeable, UUPSUp
             require(msg.value != 0, "value is set to 0");
             payable(modelOwner[_model]).transfer(msg.value * modelOwnerPercent / 100);
         }
-
-        datas[tokenId] = data(_model, _input);
-        latentSpaceHashes[latentSpaceHash] = true;
-
+        
         _safeMint(_to, tokenId);        
     }
 
