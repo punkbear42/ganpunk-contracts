@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-// import "@uniswap/v3-periphery/contracts/interfaces/IQuoter.sol";
+import "./IQuoter.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
@@ -10,7 +10,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 // import "hardhat/console.sol";
 
 contract GanPunk is Initializable, ERC721Upgradeable, OwnableUpgradeable, UUPSUpgradeable {    
-    // IQuoter public constant quoter = IQuoter(0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6);
+    IQuoter public constant quoter = IQuoter(0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6);
     address private constant DAI = 0x6B175474E89094C44Da98b954EedeAC495271d0F;
     address private constant WETH9 = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 
@@ -93,13 +93,12 @@ contract GanPunk is Initializable, ERC721Upgradeable, OwnableUpgradeable, UUPSUp
         uint24 fee = 500;
         uint160 sqrtPriceLimitX96 = 0;
 
-        return 34;
-        // return quoter.quoteExactInputSingle(
-        //     tokenIn,
-        //     tokenOut,
-        //     fee,
-        //     daiAmount,
-        //     sqrtPriceLimitX96
-        // );
+        return quoter.quoteExactInputSingle(
+            tokenIn,
+            tokenOut,
+            fee,
+            daiAmount,
+            sqrtPriceLimitX96
+        );
     }
 }
