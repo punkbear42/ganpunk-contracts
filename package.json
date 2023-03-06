@@ -7,8 +7,8 @@
   },
   "author": "",
   "dependencies": {
-      "@openzeppelin/contracts-upgradeable": "^4.8.2",
-      "@uniswap/v3-periphery": "^1.4.3",
-      "hardhat": "^2.13.0"
+      "@openzeppelin/contracts-upgradeable": "4.7.3",
+      "@uniswap/v3-periphery": "1.4.3",
+      "hardhat": "2.13.0"
   }
 }
