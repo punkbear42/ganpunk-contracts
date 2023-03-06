@@ -7,7 +7,7 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
-import "hardhat/console.sol";
+// import "hardhat/console.sol";
 
 contract GanPunk is Initializable, ERC721Upgradeable, OwnableUpgradeable, UUPSUpgradeable {    
     // IQuoter public constant quoter = IQuoter(0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6);
@@ -76,9 +76,10 @@ contract GanPunk is Initializable, ERC721Upgradeable, OwnableUpgradeable, UUPSUp
             payable(modelOwner[_model]).transfer(msg.value * modelOwnerPercent / 100);
         }
 
-        _safeMint(_to, tokenId);
         datas[tokenId] = data(_model, _input);
         latentSpaceHashes[latentSpaceHash] = true;
+
+        _safeMint(_to, tokenId);        
     }
 
     function dataOf(uint tokenId) public view returns (data memory) {
