@@ -5,5 +5,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": ""
+  "author": "",
+  "dependencies": {
+      "@openzeppelin/contracts-upgradeable": "^4.8.2",
+      "@uniswap/v3-periphery": "^1.4.3",
+      "hardhat": "^2.13.0"
+  }
 }
