@@ -72,13 +72,14 @@ contract GanPunk is Initializable, ERC721Upgradeable, OwnableUpgradeable, UUPSUp
 
         if (safe != address(0)) {
             require(msg.value != 0, "value is set to 0");
+            // slither-disable-next-line
             safe.transfer(msg.value * safePercent / 100);
         }
         if (modelOwner[_model] != address(0)) {
             require(msg.value != 0, "value is set to 0");
             payable(modelOwner[_model]).transfer(msg.value * modelOwnerPercent / 100);
         }
-        
+
         _safeMint(_to, tokenId);        
     }
 

@@ -449,6 +449,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "quoter",
+				"outputs": [
+					{
+						"internalType": "contract IQuoter",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "renounceOwnership",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -934,19 +947,19 @@
 			]
 		},
 		"contracts/GanPunk.sol": {
-			"keccak256": "0x026e48885417568b3f1ba4f850a553d27c983005369f938877c55d1ce4d1b832",
+			"keccak256": "0x720890beb3c064f78bd504d2a1b9cdaba567e62c902e572a2b4e04ab8840bfb2",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1819014e2c1e276b03ded5fa834cb927b52b22917d1672290d00ea632d35a61c",
-				"dweb:/ipfs/QmbHDWxdHr9SLqAt6eXaTNTYGPVYv6C8b84v13i8QJz48b"
+				"bzz-raw://3c9f350a1f4b11226e0e8bce57435e29c48e76d6a011caa3f2a2ed4b99ad2af3",
+				"dweb:/ipfs/QmaBYyCU1AsbzBJpsDpjY6keU9GQ8rz1vf15dgkGAkrDpp"
 			]
 		},
-		"hardhat/console.sol": {
-			"keccak256": "0x60b0215121bf25612a6739fb2f1ec35f31ee82e4a8216c032c8243d904ab3aa9",
-			"license": "MIT",
+		"contracts/IQuoter.sol": {
+			"keccak256": "0x5cbca690286f18006c6424620df272ca22dc5e86a660577c92a6f02eb88f7b58",
+			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://6e29880d33dd479bb046ba306993d26ccb779a4b1d94a046cb3567f22948bb4d",
-				"dweb:/ipfs/QmfTY1qzPt5C63Wc7y6JqfZr5899NRvXYdCpyLzR5FXQic"
+				"bzz-raw://6b87c626c64d493218e906a8efe479b337c106ab95bfdb0c0c4ac587e40c7150",
+				"dweb:/ipfs/QmaKR91W2ArEVqSt678wH5z4no5aozqBePXe6ZrTuuE5yn"
 			]
 		}
 	},
