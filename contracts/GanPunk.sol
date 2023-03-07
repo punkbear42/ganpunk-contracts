@@ -27,6 +27,8 @@ contract GanPunk is Initializable, ERC721Upgradeable, OwnableUpgradeable, UUPSUp
     uint safePercent;
     address payable safe;
 
+    mapping (address => uint) public balances;
+
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() {
         _disableInitializers();
@@ -46,6 +48,13 @@ contract GanPunk is Initializable, ERC721Upgradeable, OwnableUpgradeable, UUPSUp
         onlyOwner
         override
     {}
+
+    function withdraw (uint amount) public {
+        require(balances[msg.sender] >= amount);
+
+        balances[msg.sender] -= amount;
+        payable(msg.sender).transfer(amount);
+    }
 
     function setSafe(address payable _safe) public onlyOwner {
         safe = _safe;
@@ -72,12 +81,11 @@ contract GanPunk is Initializable, ERC721Upgradeable, OwnableUpgradeable, UUPSUp
 
         if (safe != address(0)) {
             require(msg.value != 0, "value is set to 0");
-            // slither-disable-next-line
-            safe.transfer(msg.value * safePercent / 100);
+            balances[safe] += msg.value * safePercent / 100;
         }
         if (modelOwner[_model] != address(0)) {
             require(msg.value != 0, "value is set to 0");
-            payable(modelOwner[_model]).transfer(msg.value * modelOwnerPercent / 100);
+            balances[modelOwner[_model]] += msg.value * modelOwnerPercent / 100;
         }
 
         _safeMint(_to, tokenId);        
