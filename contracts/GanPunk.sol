@@ -25,7 +25,7 @@ contract GanPunk is Initializable, ERC721Upgradeable, OwnableUpgradeable, UUPSUp
     uint creationCostInDai;
     uint modelOwnerPercent;
     uint safePercent;
-    address payable safe;
+    address safe;
 
     mapping (address => uint) public balances;
 
@@ -41,6 +41,7 @@ contract GanPunk is Initializable, ERC721Upgradeable, OwnableUpgradeable, UUPSUp
         creationCostInDai = 50;
         modelOwnerPercent = 60;
         safePercent = 40;
+        setSafe(msg.sender);
     }
 
     function _authorizeUpgrade(address newImplementation)
@@ -49,14 +50,14 @@ contract GanPunk is Initializable, ERC721Upgradeable, OwnableUpgradeable, UUPSUp
         override
     {}
 
-    function withdraw (uint amount) public {
-        require(balances[msg.sender] >= amount);
-
+    function withdraw (uint amount, address to) public {
+        require(balances[msg.sender] >= amount, "not enough balance");
+        
         balances[msg.sender] -= amount;
-        payable(msg.sender).transfer(amount);
+        payable(to).transfer(amount);
     }
 
-    function setSafe(address payable _safe) public onlyOwner {
+    function setSafe(address _safe) public onlyOwner {
         safe = _safe;
     }
 
@@ -74,7 +75,8 @@ contract GanPunk is Initializable, ERC721Upgradeable, OwnableUpgradeable, UUPSUp
     }
 
     function mint(bytes memory _model, bytes memory _input, address _to, uint256 tokenId) public payable {
-        bytes32 latentSpaceHash = keccak256(abi.encode(_model, _input));        
+        bytes32 latentSpaceHash = keccak256(abi.encode(_model, _input));
+        require(modelOwner[_model] != address(0), "model is not set");
         require(latentSpaceHashes[latentSpaceHash] == false, "latent space already used");
         datas[tokenId] = data(_model, _input);
         latentSpaceHashes[latentSpaceHash] = true;
