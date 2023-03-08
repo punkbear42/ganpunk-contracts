@@ -4,8 +4,6 @@ import { ipfsHashToHex, generateRandomLatentSpace, abiEncodeArray } from './help
 let remix: ethers.Contract
 let proxy: ethers.Contract
 
-const provider = ethers.provider
-
 describe("Deploy and mint", function () {
   it("Deploy with proxy", async function () {
     const [owner] = await ethers.getSigners();
@@ -59,10 +57,10 @@ describe("withdraw balances", function () {
   it("Should withdraw from the contract owner to another address", async function () {
     const [owner, minterA] = await ethers.getSigners();
     
-    const balanceBefore = await provider.getBalance(minterA.address)
+    const balanceBefore = await ethers.provider.getBalance(minterA.address)
     const tx = await remix.connect(owner).withdraw(300, minterA.address)
     await tx.wait()
-    const balanceAfter = await provider.getBalance(minterA.address)
+    const balanceAfter = await ethers.provider.getBalance(minterA.address)
     expect(balanceAfter).equals(balanceBefore.add(300), "wrong balance after withdraw")
   })
 })
