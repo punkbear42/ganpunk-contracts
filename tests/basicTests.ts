@@ -4,7 +4,7 @@ import { ipfsHashToHex, generateRandomLatentSpace, abiEncodeArray } from './help
 let remix: ethers.Contract
 let proxy: ethers.Contract
 
-const provider = new ethers.providers.Web3Provider(web3Provider)
+const provider = ethers.provider
 
 describe("Deploy and mint", function () {
   it("Deploy with proxy", async function () {

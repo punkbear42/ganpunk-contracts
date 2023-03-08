@@ -984,11 +984,11 @@
 			]
 		},
 		"contracts/GanPunk.sol": {
-			"keccak256": "0xd94ace4457b1dafa45176bece12d81ccfd36ff1cab32d846eeaa61619c82c826",
+			"keccak256": "0x7eaa48f9701a841a38cbb65fb2bdca246d90a745b7967076b5840140ec855c74",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f5b92cfc6bb23b8b250d00bb3a452af51591d757e0242df7b2581d80f9bbf784",
-				"dweb:/ipfs/Qmc7zRZMuJe4tu7p8RJUAb5H4CE4YjbqXHiPzW46a6NcBc"
+				"bzz-raw://0aa25a5a8c4e5ab889d557755679e23d077d2c06acc1bbde296b41cab1b08af3",
+				"dweb:/ipfs/QmdbRPkguLWVev6AZxYdyLJSUtXu5rraqhMBUGoni6K6s2"
 			]
 		},
 		"contracts/IQuoter.sol": {
@@ -997,14 +997,6 @@
 			"urls": [
 				"bzz-raw://6b87c626c64d493218e906a8efe479b337c106ab95bfdb0c0c4ac587e40c7150",
 				"dweb:/ipfs/QmaKR91W2ArEVqSt678wH5z4no5aozqBePXe6ZrTuuE5yn"
-			]
-		},
-		"hardhat/console.sol": {
-			"keccak256": "0x60b0215121bf25612a6739fb2f1ec35f31ee82e4a8216c032c8243d904ab3aa9",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://6e29880d33dd479bb046ba306993d26ccb779a4b1d94a046cb3567f22948bb4d",
-				"dweb:/ipfs/QmfTY1qzPt5C63Wc7y6JqfZr5899NRvXYdCpyLzR5FXQic"
 			]
 		}
 	},
