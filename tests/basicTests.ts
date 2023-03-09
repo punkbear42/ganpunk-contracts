@@ -57,10 +57,10 @@ describe("withdraw balances", function () {
   it("Should withdraw from the contract owner to another address", async function () {
     const [owner, minterA] = await ethers.getSigners();
     
-    const balanceBefore = await ethers.provider.getBalance(minterA.address)
+    const balanceBefore = await web3Provider.getBalance(minterA.address)
     const tx = await remix.connect(owner).withdraw(300, minterA.address)
     await tx.wait()
-    const balanceAfter = await ethers.provider.getBalance(minterA.address)
+    const balanceAfter = await web3Provider.getBalance(minterA.address)
     expect(balanceAfter).equals(balanceBefore.add(300), "wrong balance after withdraw")
   })
 })
