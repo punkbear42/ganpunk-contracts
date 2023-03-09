@@ -10,7 +10,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Run Mocha Chai Unit Test Action
-      uses: EthereumRemix/ts-sol-test@v1.3.47-dev
+      uses: EthereumRemix/ts-sol-test@v1.3.51-dev
       with:
         test-path: 'tests/basicTests.ts'
         contract-path: 'contracts'
